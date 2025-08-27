@@ -1,0 +1,9 @@
+[submodule "AccelByteNetworkUtilities"]
+	path = AccelByteNetworkUtilities
+	url = git@github.com:AccelByte/accelbyte-unreal-network-utilities.git
+[submodule "AccelByteUe4Sdk"]
+	path = AccelByteUe4Sdk
+	url = git@github.com:AccelByte/accelbyte-unreal-sdk-plugin.git
+[submodule "OnlineSubsystemAccelByte"]
+	path = OnlineSubsystemAccelByte
+	url = git@github.com:AccelByte/accelbyte-unreal-oss.git
