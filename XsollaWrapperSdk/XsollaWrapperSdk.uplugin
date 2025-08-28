@@ -1,0 +1,35 @@
+{
+    "FileVersion": 3,
+    "Version": 1,
+    "VersionName": "1.0",
+    "FriendlyName": "XsollaWrapperSdk",
+    "Description": "Wrapper SDK for Xsolla",
+    "Category": "Custom",
+    "CreatedBy": "",
+    "CreatedByURL": "",
+    "DocsURL": "",
+    "MarketplaceURL": "",
+    "SupportURL": "",
+    "EnabledByDefault": true,
+    "Modules": [
+        {
+            "Name": "XsollaWrapperSdk",
+            "Type": "Runtime",
+            "LoadingPhase": "Default"
+        }
+    ],
+    "Plugins": [
+        {
+            "Name": "AccelByteUe4Sdk",
+            "Enabled": true
+        },
+        {
+            "Name": "OnlineSubsystemAccelByte",
+            "Enabled": true
+        },
+        {
+            "Name": "AccelByteNetworkUtilities",
+            "Enabled": true
+        }
+    ]
+}
