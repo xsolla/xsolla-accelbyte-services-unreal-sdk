@@ -1,6 +1,12 @@
+// Copyright (c) 2025 Xsolla Inc. All Rights Reserved.
+// This is licensed software from Xsolla Inc. Powered by AccelByte.
+// For limitation and restriction, contact your company contract manager.
+
 #include "XsollaWrapperSdkGameSubsystem.h"
+
 #include "Engine/GameInstance.h"
 #include "Kismet/GameplayStatics.h"
+#include "OnlineSubsystemUtils.h"
 
 // Define the static Get function
 UXsollaWrapperSdkGameSubsystem* UXsollaWrapperSdkGameSubsystem::Get(const UObject* WorldContextObject)
@@ -64,7 +70,6 @@ FApiClientPtr UXsollaWrapperSdkGameSubsystem::GetGameSdkApiClient()
     FOnlineSubsystemXsolla* Subsytem = GetXsollaOnlineSubsystem();
     if (Subsytem)
     {
-
         ApiClient = Subsytem->GetApiClient(Subsytem->GetLocalUserNumCached());
     }
     else
@@ -82,10 +87,4 @@ FServerApiClientPtr UXsollaWrapperSdkGameSubsystem::GetGameSdkServerApiClient()
     ServerApiClient = XsollaSdkInstance->GetServerApiClient();
 
     return ServerApiClient;
-}
-
-// The implementation of our custom function
-void UXsollaWrapperSdkGameSubsystem::DoSomething(FString Message)
-{
-    UE_LOG(LogTemp, Warning, TEXT("UXsollaWrapperSdkGameSubsystem says: %s"), *Message);
 }
