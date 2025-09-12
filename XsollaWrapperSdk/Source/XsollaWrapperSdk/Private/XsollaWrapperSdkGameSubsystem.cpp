@@ -7,6 +7,9 @@
 #include "Engine/GameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "OnlineSubsystemUtils.h"
+#include "Core/XsollaInterfaceManager.h"
+
+DEFINE_LOG_CATEGORY(LogXsollaWrapperSubsystem);
 
 // Define the static Get function
 UXsollaWrapperSdkGameSubsystem* UXsollaWrapperSdkGameSubsystem::Get(const UObject* WorldContextObject)
@@ -37,31 +40,38 @@ void UXsollaWrapperSdkGameSubsystem::Initialize(FSubsystemCollectionBase& Collec
     {
         XsollaSdkInstance = IAccelByteUe4SdkModuleInterface::Get().CreateAccelByteInstance();
     }
+    InterfaceManager = NewObject<UXsollaInterfaceManager>(this);
+    InterfaceManager->Initialize(this);
 
-    UE_LOG(LogTemp, Warning, TEXT("XsollaWrapperSdkGameSubsystem has been initialized!"));
+    UE_LOG(LogXsollaWrapperSubsystem, Verbose, TEXT("XsollaWrapperSdkGameSubsystem has been initialized!"));
 }
 
 // This function is called when the subsystem is destroyed
 void UXsollaWrapperSdkGameSubsystem::Deinitialize()
 {
-    UE_LOG(LogTemp, Warning, TEXT("XsollaWrapperSdkGameSubsystem has been deinitialized!"));
+    UE_LOG(LogXsollaWrapperSubsystem, Verbose, TEXT("XsollaWrapperSdkGameSubsystem has been deinitialized!"));
     Super::Deinitialize();
 }
 
 FOnlineSubsystemXsolla* UXsollaWrapperSdkGameSubsystem::GetXsollaOnlineSubsystem()
 {
-    return static_cast<FOnlineSubsystemXsolla*>(Online::GetSubsystem(GetWorld()));
+    return static_cast<FOnlineSubsystemXsolla*>(Online::GetSubsystem(GetWorld(), ACCELBYTE_SUBSYSTEM));
 }
 
 FXsollaSdkInstancePtr UXsollaWrapperSdkGameSubsystem::GetXsollaSdkInstance() const
 {
     if (!XsollaSdkInstance.IsValid())
     {
-        UE_LOG(LogTemp, Warning, TEXT("XsollaSdkInstance is null or invalid."));
+        UE_LOG(LogXsollaWrapperSubsystem, Warning, TEXT("XsollaSdkInstance is null or invalid."));
         return nullptr;
     }
 
     return XsollaSdkInstance;
+}
+
+UXsollaInterfaceManager* UXsollaWrapperSdkGameSubsystem::GetInterfaceManager() const
+{
+    return InterfaceManager;
 }
 
 FApiClientPtr UXsollaWrapperSdkGameSubsystem::GetGameSdkApiClient()

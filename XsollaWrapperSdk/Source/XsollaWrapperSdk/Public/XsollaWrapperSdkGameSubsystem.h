@@ -11,16 +11,9 @@
 
 #include "XsollaWrapperSdkGameSubsystem.generated.h"
 
-#define GET_OSS_INTERFACE(ReturnType, Function)\
-ReturnType Function() \
-{ \
-    FOnlineSubsystemXsolla* Subsystem = GetXsollaOnlineSubsystem();\
-    if (Subsystem) \
-    { \
-        return Subsystem->Function(); \
-    } \
-    return nullptr; \
-}
+DECLARE_LOG_CATEGORY_EXTERN(LogXsollaWrapperSubsystem, Warning, All);
+
+class UXsollaInterfaceManager;
 
 UCLASS()
 class XSOLLAWRAPPERSDK_API UXsollaWrapperSdkGameSubsystem : public UGameInstanceSubsystem
@@ -38,38 +31,13 @@ public:
     FOnlineSubsystemXsolla* GetXsollaOnlineSubsystem();
 
     FXsollaSdkInstancePtr GetXsollaSdkInstance() const;
+    UXsollaInterfaceManager* GetInterfaceManager() const;
 
     FApiClientPtr GetGameSdkApiClient();
-
     FServerApiClientPtr GetGameSdkServerApiClient();
-
-    GET_OSS_INTERFACE(IOnlineAchievementsPtr, GetAchievementsInterface)
-    GET_OSS_INTERFACE(FOnlineAgreementXsollaPtr, GetAgreementInterface)
-    GET_OSS_INTERFACE(FOnlineAnalyticsXsollaPtr, GetAnalyticsInterface)
-    GET_OSS_INTERFACE(FOnlineAuthXsollaPtr, GetAuthInterface)
-    GET_OSS_INTERFACE(IOnlineChatPtr, GetChatInterface)
-    GET_OSS_INTERFACE(FOnlineCloudSaveXsollaPtr, GetCloudSaveInterface)
-    GET_OSS_INTERFACE(IOnlineEntitlementsPtr, GetEntitlementsInterface)
-    GET_OSS_INTERFACE(IOnlineExternalUIPtr, GetExternalUIInterface)
-    GET_OSS_INTERFACE(IOnlineFriendsPtr, GetFriendsInterface)
-    GET_OSS_INTERFACE(FOnlineGameStandardEventXsollaPtr, GetGameStandardEventInterface)
-    GET_OSS_INTERFACE(IOnlineGroupsPtr, GetGroupsInterface)
-    GET_OSS_INTERFACE(IOnlineIdentityPtr, GetIdentityInterface)
-    GET_OSS_INTERFACE(IOnlineLeaderboardsPtr, GetLeaderboardsInterface)
-    GET_OSS_INTERFACE(FOnlinePredefinedEventXsollaPtr, GetPredefinedEventInterface)
-    GET_OSS_INTERFACE(IOnlinePresencePtr, GetPresenceInterface)
-    GET_OSS_INTERFACE(IOnlinePurchasePtr, GetPurchaseInterface)
-    GET_OSS_INTERFACE(IOnlineSessionPtr, GetSessionInterface)
-    GET_OSS_INTERFACE(IOnlineStatsPtr, GetStatsInterface)
-    GET_OSS_INTERFACE(IOnlineStoreV2Ptr, GetStoreV2Interface)
-    GET_OSS_INTERFACE(IOnlineTimePtr, GetTimeInterface)
-    GET_OSS_INTERFACE(IOnlineUserPtr, GetUserInterface)
-    GET_OSS_INTERFACE(FOnlineUserCacheXsollaPtr, GetUserCache)
-    GET_OSS_INTERFACE(IOnlineUserCloudPtr, GetUserCloudInterface)
-    GET_OSS_INTERFACE(IOnlineVoicePtr, GetVoiceInterface)
-    GET_OSS_INTERFACE(IVoiceChatPtr, GetVoiceChatInterface)
-    GET_OSS_INTERFACE(FOnlineWalletXsollaPtr, GetWalletInterface)
 protected:
-
     FXsollaSdkInstancePtr XsollaSdkInstance;
+
+    UPROPERTY()
+    UXsollaInterfaceManager* InterfaceManager;
 };

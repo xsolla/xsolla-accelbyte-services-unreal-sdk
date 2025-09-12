@@ -30,6 +30,14 @@
         {
             "Name": "AccelByteNetworkUtilities",
             "Enabled": true
+        },
+        {
+            "Name": "Xsolla",
+            "Enabled": true
+        },
+        {
+            "Name": "OnlineSubsystemSteam",
+            "Enabled": true
         }
     ]
 }

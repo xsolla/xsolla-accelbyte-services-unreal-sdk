@@ -5,20 +5,22 @@
 #include "XsollaWrapperSdk.h"
 #include "XsollaWrapperSdkGameSubsystem.h" // We need to include our subsystem header
 
+DEFINE_LOG_CATEGORY(LogXsollaWrapperModule);
+
 #define LOCTEXT_NAMESPACE "FXsollaWrapperSdkModule"
 
 // This is where you would do any initialization when the module loads
 void FXsollaWrapperSdkModule::StartupModule()
 {
     // This code will execute after your module is loaded into memory; the exact timing depends on the LoadingPhase specified in the .uplugin file.
-    UE_LOG(LogTemp, Warning, TEXT("XsollaWrapperSdk module has started up!"));
+    UE_LOG(LogXsollaWrapperModule, Verbose, TEXT("XsollaWrapperSdk module has started up!"));
 }
 
 // This is where you would do any cleanup when the module unloads
 void FXsollaWrapperSdkModule::ShutdownModule()
 {
     // This function may be called during shutdown to clean up your module.
-    UE_LOG(LogTemp, Warning, TEXT("XsollaWrapperSdk module has shut down!"));
+    UE_LOG(LogXsollaWrapperModule, Verbose, TEXT("XsollaWrapperSdk module has been shut down!"));
 }
 
 // This macro registers our module with the Unreal Engine
