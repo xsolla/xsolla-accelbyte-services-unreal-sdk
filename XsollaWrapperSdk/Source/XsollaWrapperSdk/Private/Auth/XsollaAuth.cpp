@@ -7,9 +7,6 @@
 #include "XsollaWrapperSdkGameSubsystem.h"
 #include "Core/XsollaInterfaceManager.h"
 
-#include "OnlineIdentityInterfaceAccelByte.h"
-#include "InterfaceModels/OnlineIdentityInterfaceAccelByteModels.h"
-
 DEFINE_LOG_CATEGORY(LogXsollaAuth);
 
 void UXsollaAuth::Initialize()

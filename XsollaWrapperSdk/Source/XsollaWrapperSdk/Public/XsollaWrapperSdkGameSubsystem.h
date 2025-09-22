@@ -8,6 +8,7 @@
 #include "Subsystems/GameInstanceSubsystem.h"
 
 #include "XsollaMapping.h"
+#include "Core/XsollaInterfaceManager.h"
 
 #include "XsollaWrapperSdkGameSubsystem.generated.h"
 

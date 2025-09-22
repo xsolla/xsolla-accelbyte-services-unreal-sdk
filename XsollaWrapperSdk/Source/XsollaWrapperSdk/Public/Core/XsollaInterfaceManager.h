@@ -5,7 +5,35 @@
 #pragma once
 
 #include "XsollaMapping.h"
-#include "XsollaWrapperSdkGameSubsystem.h"
+#include "OnlineSubsystemUtils.h"
+#include "Subsystems/GameInstanceSubsystem.h"
+
+#include "OnlineAchievementsInterfaceAccelByte.h"
+#include "OnlineAgreementInterfaceAccelByte.h"
+#include "OnlineAnalyticsInterfaceAccelByte.h"
+#include "OnlineAuthInterfaceAccelByte.h"
+#include "OnlineChatInterfaceAccelByte.h"
+#include "OnlineCloudSaveInterfaceAccelByte.h"
+#include "OnlineEntitlementsInterfaceAccelByte.h"
+#include "OnlineExternalUIInterfaceAccelByte.h"
+#include "OnlineFriendsInterfaceAccelByte.h"
+#include "OnlineGameStandardEventInterfaceAccelByte.h"
+#include "OnlineGroupsInterfaceAccelByte.h"
+#include "OnlineIdentityInterfaceAccelByte.h"
+#include "OnlineLeaderboardInterfaceAccelByte.h"
+#include "OnlinePredefinedEventInterfaceAccelByte.h"
+#include "OnlinePresenceInterfaceAccelByte.h"
+#include "OnlinePurchaseInterfaceAccelByte.h"
+#include "OnlineSessionInterfaceV2AccelByte.h"
+#include "OnlineStatisticInterfaceAccelByte.h"
+#include "OnlineStoreInterfaceV2AccelByte.h"
+#include "OnlineTimeInterfaceAccelByte.h"
+#include "OnlineUserInterfaceAccelByte.h"
+#include "OnlineUserCacheAccelByte.h"
+#include "OnlineUserCloudInterfaceAccelByte.h"
+#include "OnlineVoiceInterfaceAccelByte.h"
+#include "OnlineWalletInterfaceAccelByte.h"
+
 #include "Auth/XsollaAuth.h"
 
 #include "XsollaInterfaceManager.generated.h"
@@ -13,7 +41,7 @@
 #define GET_OSS_INTERFACE(ReturnType, Function)\
 ReturnType Function() const\
 { \
-FOnlineSubsystemXsolla* Subsystem = XsollaWrapperSdkGameSubsystem->GetXsollaOnlineSubsystem();\
+FOnlineSubsystemXsolla* Subsystem = static_cast<FOnlineSubsystemXsolla*>(Online::GetSubsystem(GetWorld(), ACCELBYTE_SUBSYSTEM));\
 if (Subsystem) \
 { \
 return Subsystem->Function(); \
@@ -27,7 +55,7 @@ class XSOLLAWRAPPERSDK_API UXsollaInterfaceManager : public UObject
 	GENERATED_BODY()
 public:
 	UXsollaInterfaceManager();
-	void Initialize(UXsollaWrapperSdkGameSubsystem* GameSubsystem);
+	void Initialize(UGameInstanceSubsystem* GameSubsystem);
 
 	GET_OSS_INTERFACE(IOnlineAchievementsPtr, GetAchievementsInterface)
 	GET_OSS_INTERFACE(FOnlineAgreementXsollaPtr, GetAgreementInterface)
@@ -58,7 +86,7 @@ public:
 
 	UXsollaAuth* GetAuth() const;
 private:
-	UXsollaWrapperSdkGameSubsystem* XsollaWrapperSdkGameSubsystem = nullptr;
+	UGameInstanceSubsystem* XsollaWrapperSdkGameSubsystem = nullptr;
 	FXsollaSdkInstancePtr XsollaSdkInstance;
 
 	UPROPERTY()

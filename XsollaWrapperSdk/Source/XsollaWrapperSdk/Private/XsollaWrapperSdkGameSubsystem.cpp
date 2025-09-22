@@ -7,7 +7,6 @@
 #include "Engine/GameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "OnlineSubsystemUtils.h"
-#include "Core/XsollaInterfaceManager.h"
 
 DEFINE_LOG_CATEGORY(LogXsollaWrapperSubsystem);
 

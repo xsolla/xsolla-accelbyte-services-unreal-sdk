@@ -7,7 +7,15 @@
 #include "Core/AccelByteInstance.h"
 #include "Core/AccelByteApiClient.h"
 #include "Core/AccelByteServerApiClient.h"
+
 #include "OnlineSubsystemAccelByte.h"
+#include "OnlineSubsystemAccelByteSessionSettings.h"
+#include "OnlineSubsystemAccelByteTypes.h"
+#include "OnlineSubsystemAccelByteUtils.h"
+
+#include "OnlineErrorAccelByte.h"
+#include "OnlineSessionSettingsAccelByte.h"
+#include "OnlineUserCacheAccelByte.h"
 
 namespace Xsolla = AccelByte;
 using namespace Xsolla;
@@ -47,3 +55,5 @@ DEFINE_CLASS_ALIAS(FOnlineUserCacheAccelByte, FOnlineUserCacheXsolla)
 DEFINE_CLASS_ALIAS(FOnlineUserCloudAccelByte, FOnlineUserCloudXsolla)
 DEFINE_CLASS_ALIAS(FOnlineVoiceAccelByte, FOnlineVoiceXsolla)
 DEFINE_CLASS_ALIAS(FOnlineWalletAccelByte, FOnlineWalletXsolla)
+
+DEFINE_CLASS_ALIAS(FUserOnlineAccountAccelByte, FUserOnlineAccountXsolla)
