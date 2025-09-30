@@ -4,7 +4,7 @@
 
 #include "Auth/XsollaAuth.h"
 #include "XsollaMapping.h"
-#include "XsollaWrapperSdkGameSubsystem.h"
+#include "XsollaBackendSdkGameSubsystem.h"
 #include "Core/XsollaInterfaceManager.h"
 
 DEFINE_LOG_CATEGORY(LogXsollaAuth);
@@ -99,7 +99,7 @@ void UXsollaAuth::HandleLoginCancelled()
 
 void UXsollaAuth::LoginToGameService(const FXsollaLoginData& LoginData)
 {
-	const UXsollaWrapperSdkGameSubsystem* Subsystem = GetTypedOuter<UXsollaWrapperSdkGameSubsystem>();
+	const UXsollaBackendSdkGameSubsystem* Subsystem = GetTypedOuter<UXsollaBackendSdkGameSubsystem>();
 	const UXsollaInterfaceManager* InterfaceManager = Subsystem->GetInterfaceManager();
 	const FOnlineIdentityXsollaPtr IdentityInterface = StaticCastSharedPtr<FOnlineIdentityXsolla>(InterfaceManager->GetIdentityInterface());
 	

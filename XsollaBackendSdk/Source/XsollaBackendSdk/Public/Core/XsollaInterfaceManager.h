@@ -50,7 +50,7 @@ return nullptr; \
 }
 
 UCLASS()
-class XSOLLAWRAPPERSDK_API UXsollaInterfaceManager : public UObject
+class XSOLLABACKENDSDK_API UXsollaInterfaceManager : public UObject
 {
 	GENERATED_BODY()
 public:
@@ -86,7 +86,7 @@ public:
 
 	UXsollaAuth* GetAuth() const;
 private:
-	UGameInstanceSubsystem* XsollaWrapperSdkGameSubsystem = nullptr;
+	UGameInstanceSubsystem* XsollaBackendSdkGameSubsystem = nullptr;
 	FXsollaSdkInstancePtr XsollaSdkInstance;
 
 	UPROPERTY()

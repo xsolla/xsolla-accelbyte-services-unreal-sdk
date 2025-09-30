@@ -2,8 +2,8 @@
   "FileVersion": 3,
   "Version": 1,
   "VersionName": "2025.6",
-  "FriendlyName": "XsollaWrapperSdk",
-  "Description": "Wrapper SDK for Xsolla",
+  "FriendlyName": "XsollaBackendSdk",
+  "Description": "Backend SDK for Xsolla",
   "Category": "Custom",
   "CreatedBy": "",
   "CreatedByURL": "",
@@ -13,7 +13,7 @@
   "EnabledByDefault": true,
   "Modules": [
     {
-      "Name": "XsollaWrapperSdk",
+      "Name": "XsollaBackendSdk",
       "Type": "Runtime",
       "LoadingPhase": "Default"
     }

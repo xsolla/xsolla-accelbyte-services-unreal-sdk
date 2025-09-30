@@ -4,9 +4,9 @@
 
 using UnrealBuildTool;
 
-public class XsollaWrapperSdk : ModuleRules
+public class XsollaBackendSdk : ModuleRules
 {
-    public XsollaWrapperSdk(ReadOnlyTargetRules Target) : base(Target)
+    public XsollaBackendSdk(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
         

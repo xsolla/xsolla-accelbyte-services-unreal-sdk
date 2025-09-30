@@ -6,10 +6,10 @@
 
 #include "Modules/ModuleManager.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(LogXsollaWrapperModule, Warning, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogXsollaBackendModule, Warning, All);
 
 // Define our main module class
-class FXsollaWrapperSdkModule : public IModuleInterface
+class FXsollaBackendSdkModule : public IModuleInterface
 {
 public:
 

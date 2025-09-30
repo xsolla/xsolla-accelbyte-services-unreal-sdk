@@ -10,20 +10,20 @@
 #include "XsollaMapping.h"
 #include "Core/XsollaInterfaceManager.h"
 
-#include "XsollaWrapperSdkGameSubsystem.generated.h"
+#include "XsollaBackendSdkGameSubsystem.generated.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(LogXsollaWrapperSubsystem, Warning, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogXsollaBackendSubsystem, Warning, All);
 
 class UXsollaInterfaceManager;
 
 UCLASS()
-class XSOLLAWRAPPERSDK_API UXsollaWrapperSdkGameSubsystem : public UGameInstanceSubsystem
+class XSOLLABACKENDSDK_API UXsollaBackendSdkGameSubsystem : public UGameInstanceSubsystem
 {
     GENERATED_BODY()
 
 public:
 
-    static UXsollaWrapperSdkGameSubsystem* Get(const UObject* WorldContextObject);
+    static UXsollaBackendSdkGameSubsystem* Get(const UObject* WorldContextObject);
 
     // USubsystem implementation - required overrides
     virtual void Initialize(FSubsystemCollectionBase& Collection) override;

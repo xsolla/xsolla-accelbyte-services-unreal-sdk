@@ -11,12 +11,12 @@
 #include "XsollaAuth.generated.h"
 
 #define XSOLLA_PLATFORM TEXT("xsolla")
-#define XSOLLA_STATE TEXT("xsollawrapper")
+#define XSOLLA_STATE TEXT("xsollabackend")
 
 DECLARE_LOG_CATEGORY_EXTERN(LogXsollaAuth, Warning, All);
 
 USTRUCT()
-struct XSOLLAWRAPPERSDK_API FLoginUser
+struct XSOLLABACKENDSDK_API FLoginUser
 {
 	GENERATED_BODY()
 	int32 LocalUserNum;
@@ -29,7 +29,7 @@ DECLARE_DYNAMIC_DELEGATE(FOnXsollaLoginCancelled);
 
 
 UCLASS()
-class XSOLLAWRAPPERSDK_API UXsollaAuth : public UObject
+class XSOLLABACKENDSDK_API UXsollaAuth : public UObject
 {
 	GENERATED_BODY()
 public:

@@ -2,16 +2,16 @@
 // This is licensed software from Xsolla Inc. Powered by AccelByte.
 // For limitation and restriction, contact your company contract manager.
 
-#include "XsollaWrapperSdkGameSubsystem.h"
+#include "XsollaBackendSdkGameSubsystem.h"
 
 #include "Engine/GameInstance.h"
 #include "Kismet/GameplayStatics.h"
 #include "OnlineSubsystemUtils.h"
 
-DEFINE_LOG_CATEGORY(LogXsollaWrapperSubsystem);
+DEFINE_LOG_CATEGORY(LogXsollaBackendSubsystem);
 
 // Define the static Get function
-UXsollaWrapperSdkGameSubsystem* UXsollaWrapperSdkGameSubsystem::Get(const UObject* WorldContextObject)
+UXsollaBackendSdkGameSubsystem* UXsollaBackendSdkGameSubsystem::Get(const UObject* WorldContextObject)
 {
     if (WorldContextObject)
     {
@@ -19,14 +19,14 @@ UXsollaWrapperSdkGameSubsystem* UXsollaWrapperSdkGameSubsystem::Get(const UObjec
         if (const UGameInstance* GameInstance = UGameplayStatics::GetGameInstance(WorldContextObject))
         {
             // Use the GameInstance to get the subsystem instance
-            return GameInstance->GetSubsystem<UXsollaWrapperSdkGameSubsystem>();
+            return GameInstance->GetSubsystem<UXsollaBackendSdkGameSubsystem>();
         }
     }
     return nullptr;
 }
 
 // This function is called when the subsystem is created
-void UXsollaWrapperSdkGameSubsystem::Initialize(FSubsystemCollectionBase& Collection)
+void UXsollaBackendSdkGameSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
     Super::Initialize(Collection);
 
@@ -42,38 +42,38 @@ void UXsollaWrapperSdkGameSubsystem::Initialize(FSubsystemCollectionBase& Collec
     InterfaceManager = NewObject<UXsollaInterfaceManager>(this);
     InterfaceManager->Initialize(this);
 
-    UE_LOG(LogXsollaWrapperSubsystem, Verbose, TEXT("XsollaWrapperSdkGameSubsystem has been initialized!"));
+    UE_LOG(LogXsollaBackendSubsystem, Verbose, TEXT("XsollaBackendSdkGameSubsystem has been initialized!"));
 }
 
 // This function is called when the subsystem is destroyed
-void UXsollaWrapperSdkGameSubsystem::Deinitialize()
+void UXsollaBackendSdkGameSubsystem::Deinitialize()
 {
-    UE_LOG(LogXsollaWrapperSubsystem, Verbose, TEXT("XsollaWrapperSdkGameSubsystem has been deinitialized!"));
+    UE_LOG(LogXsollaBackendSubsystem, Verbose, TEXT("XsollaBackendSdkGameSubsystem has been deinitialized!"));
     Super::Deinitialize();
 }
 
-FOnlineSubsystemXsolla* UXsollaWrapperSdkGameSubsystem::GetXsollaOnlineSubsystem()
+FOnlineSubsystemXsolla* UXsollaBackendSdkGameSubsystem::GetXsollaOnlineSubsystem()
 {
     return static_cast<FOnlineSubsystemXsolla*>(Online::GetSubsystem(GetWorld(), ACCELBYTE_SUBSYSTEM));
 }
 
-FXsollaSdkInstancePtr UXsollaWrapperSdkGameSubsystem::GetXsollaSdkInstance() const
+FXsollaSdkInstancePtr UXsollaBackendSdkGameSubsystem::GetXsollaSdkInstance() const
 {
     if (!XsollaSdkInstance.IsValid())
     {
-        UE_LOG(LogXsollaWrapperSubsystem, Warning, TEXT("XsollaSdkInstance is null or invalid."));
+        UE_LOG(LogXsollaBackendSubsystem, Warning, TEXT("XsollaSdkInstance is null or invalid."));
         return nullptr;
     }
 
     return XsollaSdkInstance;
 }
 
-UXsollaInterfaceManager* UXsollaWrapperSdkGameSubsystem::GetInterfaceManager() const
+UXsollaInterfaceManager* UXsollaBackendSdkGameSubsystem::GetInterfaceManager() const
 {
     return InterfaceManager;
 }
 
-FApiClientPtr UXsollaWrapperSdkGameSubsystem::GetGameSdkApiClient()
+FApiClientPtr UXsollaBackendSdkGameSubsystem::GetGameSdkApiClient()
 {
     FApiClientPtr ApiClient;
     FOnlineSubsystemXsolla* Subsytem = GetXsollaOnlineSubsystem();
@@ -89,7 +89,7 @@ FApiClientPtr UXsollaWrapperSdkGameSubsystem::GetGameSdkApiClient()
     return ApiClient;
 }
 
-FServerApiClientPtr UXsollaWrapperSdkGameSubsystem::GetGameSdkServerApiClient()
+FServerApiClientPtr UXsollaBackendSdkGameSubsystem::GetGameSdkServerApiClient()
 {
     FServerApiClientPtr ServerApiClient;
 
