@@ -55,7 +55,7 @@ class XSOLLABACKENDSDK_API UXsollaInterfaceManager : public UObject
 	GENERATED_BODY()
 public:
 	UXsollaInterfaceManager();
-	void Initialize(UGameInstanceSubsystem* GameSubsystem);
+	void Initialize();
 
 	GET_OSS_INTERFACE(IOnlineAchievementsPtr, GetAchievementsInterface)
 	GET_OSS_INTERFACE(FOnlineAgreementXsollaPtr, GetAgreementInterface)
@@ -86,7 +86,6 @@ public:
 
 	UXsollaAuth* GetAuth() const;
 private:
-	UGameInstanceSubsystem* XsollaBackendSdkGameSubsystem = nullptr;
 	FXsollaSdkInstancePtr XsollaSdkInstance;
 
 	UPROPERTY()

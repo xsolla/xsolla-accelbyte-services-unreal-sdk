@@ -40,7 +40,7 @@ void UXsollaBackendSdkGameSubsystem::Initialize(FSubsystemCollectionBase& Collec
         XsollaSdkInstance = IAccelByteUe4SdkModuleInterface::Get().CreateAccelByteInstance();
     }
     InterfaceManager = NewObject<UXsollaInterfaceManager>(this);
-    InterfaceManager->Initialize(this);
+    InterfaceManager->Initialize();
 
     UE_LOG(LogXsollaBackendSubsystem, Verbose, TEXT("XsollaBackendSdkGameSubsystem has been initialized!"));
 }

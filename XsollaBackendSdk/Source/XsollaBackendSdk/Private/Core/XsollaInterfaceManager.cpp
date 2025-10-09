@@ -8,9 +8,8 @@ UXsollaInterfaceManager::UXsollaInterfaceManager()
 {
 }
 
-void UXsollaInterfaceManager::Initialize(UGameInstanceSubsystem* GameSubsystem)
+void UXsollaInterfaceManager::Initialize()
 {
-	XsollaBackendSdkGameSubsystem = GameSubsystem;
 	XsollaAuth = NewObject<UXsollaAuth>(this);
 	XsollaAuth->Initialize();
 }

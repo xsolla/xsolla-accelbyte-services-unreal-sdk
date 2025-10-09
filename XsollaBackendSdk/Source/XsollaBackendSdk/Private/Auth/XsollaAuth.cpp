@@ -61,8 +61,9 @@ void UXsollaAuth::SilentSubsystemAuth(const FName& SubsystemName, const FOnlineA
 		IdentityInterface->Login(0, Credentials);
 	}
 	else
-	{
-		UE_LOG(LogXsollaAuth, Warning, TEXT("Cannot find %s OSS!!"), *SilentAuthSubsystemName.ToString());
+	{	
+		UE_LOG(LogXsollaAuth, Warning, TEXT("%s Subsystem Initialization Failed"), *SilentAuthSubsystemName.ToString());
+		OnXsollaLoginFailed.ExecuteIfBound(TEXT("%s auth failed"), *SilentAuthSubsystemName.ToString());
 	}
 }
 

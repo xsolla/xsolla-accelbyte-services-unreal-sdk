@@ -36,9 +36,12 @@ public:
 
     FApiClientPtr GetGameSdkApiClient();
     FServerApiClientPtr GetGameSdkServerApiClient();
+
 protected:
     FXsollaSdkInstancePtr XsollaSdkInstance;
 
     UPROPERTY()
     UXsollaInterfaceManager* InterfaceManager;
+
+
 };
