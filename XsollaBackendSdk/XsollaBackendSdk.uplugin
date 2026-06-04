@@ -1,7 +1,7 @@
 {
   "FileVersion": 3,
   "Version": 1,
-  "VersionName": "2026.10",
+  "VersionName": "2026.11",
   "FriendlyName": "XsollaBackendSdk",
   "Description": "Backend SDK for Xsolla",
   "Category": "Custom",
