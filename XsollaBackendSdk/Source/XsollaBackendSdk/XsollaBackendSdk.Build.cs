@@ -15,6 +15,7 @@ public class XsollaBackendSdk : ModuleRules
             {
                 "Core",
                 "Engine",
+                "DeveloperSettings",
                 "OnlineSubsystem",
                 "UMG",
                 "AccelByteUe4Sdk",

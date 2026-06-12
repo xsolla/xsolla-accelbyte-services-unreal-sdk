@@ -8,6 +8,10 @@
 #include "Kismet/GameplayStatics.h"
 #include "OnlineSubsystemUtils.h"
 
+#include "XsollaSettings.h"
+#include "Core/AccelByteSettings.h"
+#include "Core/AccelByteServerSettings.h"
+
 DEFINE_LOG_CATEGORY(LogXsollaBackendSubsystem);
 
 // Define the static Get function
@@ -37,7 +41,41 @@ void UXsollaBackendSdkGameSubsystem::Initialize(FSubsystemCollectionBase& Collec
     }
     else
     {
-        XsollaSdkInstance = IAccelByteUe4SdkModuleInterface::Get().CreateAccelByteInstance();
+        // ---------------------------------------------------------------
+        // Non-OSS path: build AccelByte::Settings / ServerSettings from
+        // UXsollaSettings and pass them to the settings-accepting overload
+        // so the direct-SDK path also honors the Xsolla config.
+        //
+        // The PostConfigInit module (XsollaBackendSdkConfig) already
+        // forwarded these values into the AccelByte ini sections, so the
+        // no-arg overload would pick them up too. However, constructing
+        // the structs explicitly here makes the non-OSS path independent
+        // of ini-level forwarding and guarantees the values match the
+        // Xsolla CDO at the moment of instance creation.
+        // ---------------------------------------------------------------
+        const UXsollaSettings* XsollaConfig = GetDefault<UXsollaSettings>();
+
+        // Start from the module's existing global settings so that any
+        // value NOT overridden by UXsollaSettings retains its default.
+        AccelByte::Settings ClientSettings = IAccelByteUe4SdkModuleInterface::Get().GetClientSettings();
+        AccelByte::ServerSettings SrvSettings = IAccelByteUe4SdkModuleInterface::Get().GetServerSettings();
+
+        // --- Client overrides (only if non-empty) ---
+        if (!XsollaConfig->ClientId.IsEmpty())            { ClientSettings.ClientId = XsollaConfig->ClientId; }
+        if (!XsollaConfig->Namespace.IsEmpty())           { ClientSettings.Namespace = XsollaConfig->Namespace; }
+        if (!XsollaConfig->PublisherNamespace.IsEmpty())   { ClientSettings.PublisherNamespace = XsollaConfig->PublisherNamespace; }
+        if (!XsollaConfig->RedirectURI.IsEmpty())          { ClientSettings.RedirectURI = XsollaConfig->RedirectURI; }
+        if (!XsollaConfig->BaseUrl.IsEmpty())              { ClientSettings.BaseUrl = XsollaConfig->BaseUrl; }
+
+        // --- Server overrides (only if non-empty) ---
+        if (!XsollaConfig->ServerClientId.IsEmpty())           { SrvSettings.ClientId = XsollaConfig->ServerClientId; }
+        if (!XsollaConfig->ServerClientSecret.IsEmpty())       { SrvSettings.ClientSecret = XsollaConfig->ServerClientSecret; }
+        if (!XsollaConfig->ServerNamespace.IsEmpty())           { SrvSettings.Namespace = XsollaConfig->ServerNamespace; }
+        if (!XsollaConfig->ServerPublisherNamespace.IsEmpty())  { SrvSettings.PublisherNamespace = XsollaConfig->ServerPublisherNamespace; }
+        if (!XsollaConfig->ServerBaseUrl.IsEmpty())             { SrvSettings.BaseUrl = XsollaConfig->ServerBaseUrl; }
+
+        XsollaSdkInstance = IAccelByteUe4SdkModuleInterface::Get().CreateAccelByteInstance(
+            ClientSettings, SrvSettings);
     }
     InterfaceManager = NewObject<UXsollaInterfaceManager>(this);
     InterfaceManager->Initialize();

@@ -13,6 +13,11 @@
   "EnabledByDefault": true,
   "Modules": [
     {
+      "Name": "XsollaBackendSdkConfig",
+      "Type": "Runtime",
+      "LoadingPhase": "PostConfigInit"
+    },
+    {
       "Name": "XsollaBackendSdk",
       "Type": "Runtime",
       "LoadingPhase": "Default"
