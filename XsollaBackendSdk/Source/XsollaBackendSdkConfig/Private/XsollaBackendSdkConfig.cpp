@@ -79,6 +79,11 @@ void FXsollaBackendSdkConfigModule::ForwardConfig()
 			UE_LOG(LogXsollaBackendConfig, Verbose,
 				TEXT("Forwarded [%s] %s -> [%s] %s"), SrcSection, SrcKey, DstSection, DstKey);
 		}
+		else
+		{
+			UE_LOG(LogXsollaBackendConfig, Verbose,
+				TEXT("Skipped [%s] %s -> [%s] %s"), SrcSection, SrcKey, DstSection, DstKey);
+		}
 	};
 
 	// -----------------------------------------------------------------
