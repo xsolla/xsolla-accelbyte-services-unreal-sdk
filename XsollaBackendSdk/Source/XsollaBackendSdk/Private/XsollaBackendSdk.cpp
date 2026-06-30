@@ -5,6 +5,10 @@
 #include "XsollaBackendSdk.h"
 #include "XsollaBackendSdkGameSubsystem.h" // We need to include our subsystem header
 
+#if WITH_EDITOR
+#include "ISettingsModule.h"
+#endif
+
 DEFINE_LOG_CATEGORY(LogXsollaBackendModule);
 
 #define LOCTEXT_NAMESPACE "FXsollaBackendSdkModule"
@@ -12,8 +16,16 @@ DEFINE_LOG_CATEGORY(LogXsollaBackendModule);
 // This is where you would do any initialization when the module loads
 void FXsollaBackendSdkModule::StartupModule()
 {
-    // This code will execute after your module is loaded into memory; the exact timing depends on the LoadingPhase specified in the .uplugin file.
     UE_LOG(LogXsollaBackendModule, Verbose, TEXT("XsollaBackendSdk module has started up!"));
+
+#if WITH_EDITOR
+    // Hide AccelByte settings here so developers configure everything through Xsolla Backend SDK Settings only.
+    if (ISettingsModule* SettingsModule = FModuleManager::GetModulePtr<ISettingsModule>("Settings"))
+    {
+        SettingsModule->UnregisterSettings(TEXT("Project"), TEXT("Plugins"), TEXT("AccelByte Unreal Engine 4 Client SDK"));
+        SettingsModule->UnregisterSettings(TEXT("Project"), TEXT("Plugins"), TEXT("AccelByte Unreal Engine 4 Server SDK"));
+    }
+#endif
 }
 
 // This is where you would do any cleanup when the module unloads

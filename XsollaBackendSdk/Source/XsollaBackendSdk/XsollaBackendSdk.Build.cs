@@ -32,5 +32,10 @@ public class XsollaBackendSdk : ModuleRules
                 "CoreUObject",
             }
         );
+
+        if (Target.bBuildEditor)
+        {
+            PrivateDependencyModuleNames.Add("Settings");
+        }
     }
 }
