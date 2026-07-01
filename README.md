@@ -1,5 +1,19 @@
 # Xsolla Game Services Backend
-This plugin is backend sdk for your gaming service, enabling it to work seamlessly with the Xsolla store-ue4-sdk.
+
+## Overview
+Backend SDK for your gaming service, enabling it to work seamlessly with the Xsolla `store-ue4-sdk`. All credentials, base URLs, and runtime behavior are configured through a single Xsolla settings class (`UXsollaSettings`) — see [Configuration](#configuration).
+
+This is a distribution repo, not a game project — there is no `.uproject` or build harness here. To use or verify it, copy/symlink the plugins into a UE project's `Plugins/` folder and build there.
+
+## Supported Unreal Engine
+Target: Unreal Engine 5.7.
+
+## Dependencies
+This bundle includes the following plugins (bundled as submodules of this repo):
+1. `XsollaBackendSdk` — the wrapper SDK; the only first-party code in this repo.
+2. `AccelByteUe4Sdk`
+3. `OnlineSubsystemAccelByte`
+4. `AccelByteNetworkUtilities`
 
 ## Configuration
 
@@ -25,9 +39,9 @@ ServerBaseUrl=https://example.gamingservices.xsolla.com
 In the Unreal Editor the same settings appear under
 **Project Settings -> Plugins -> Xsolla Backend SDK**.
 
-### AccelByte-named runtime keys (do not rename)
+### Internal runtime keys (do not rename)
 
-The following runtime keys **must** keep their AccelByte names. Renaming them
+The following runtime keys **must** keep their exact names. Renaming them
 will break login and online-subsystem look-up:
 
 | Key | Purpose |
