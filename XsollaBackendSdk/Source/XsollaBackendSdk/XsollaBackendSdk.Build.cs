@@ -15,6 +15,7 @@ public class XsollaBackendSdk : ModuleRules
             {
                 "Core",
                 "Engine",
+                "DeveloperSettings",
                 "OnlineSubsystem",
                 "UMG",
                 "AccelByteUe4Sdk",
@@ -31,5 +32,10 @@ public class XsollaBackendSdk : ModuleRules
                 "CoreUObject",
             }
         );
+
+        if (Target.bBuildEditor)
+        {
+            PrivateDependencyModuleNames.Add("Settings");
+        }
     }
 }
