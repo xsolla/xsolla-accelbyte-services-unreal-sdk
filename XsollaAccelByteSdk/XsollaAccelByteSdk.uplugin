@@ -2,8 +2,8 @@
   "FileVersion": 3,
   "Version": 1,
   "VersionName": "2026.16",
-  "FriendlyName": "XsollaBackendSdk",
-  "Description": "Backend SDK for Xsolla",
+  "FriendlyName": "Xsolla AccelByte SDK",
+  "Description": "Xsolla auth extension for AccelByte Gaming Services",
   "Category": "Custom",
   "CreatedBy": "",
   "CreatedByURL": "",
@@ -13,12 +13,7 @@
   "EnabledByDefault": true,
   "Modules": [
     {
-      "Name": "XsollaBackendSdkConfig",
-      "Type": "Runtime",
-      "LoadingPhase": "PostConfigInit"
-    },
-    {
-      "Name": "XsollaBackendSdk",
+      "Name": "XsollaAccelByteSdk",
       "Type": "Runtime",
       "LoadingPhase": "Default"
     }

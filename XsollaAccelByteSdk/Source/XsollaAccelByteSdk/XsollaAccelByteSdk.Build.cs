@@ -4,20 +4,21 @@
 
 using UnrealBuildTool;
 
-public class XsollaBackendSdk : ModuleRules
+public class XsollaAccelByteSdk : ModuleRules
 {
-    public XsollaBackendSdk(ReadOnlyTargetRules Target) : base(Target)
+    public XsollaAccelByteSdk(ReadOnlyTargetRules Target) : base(Target)
     {
         PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
-        
+
         PublicDependencyModuleNames.AddRange(
             new string[]
             {
                 "Core",
+                "CoreUObject",
                 "Engine",
                 "DeveloperSettings",
                 "OnlineSubsystem",
-                "UMG",
+                "OnlineSubsystemUtils",
                 "AccelByteUe4Sdk",
                 "AccelByteNetworkUtilities",
                 "OnlineSubsystemAccelByte",
@@ -25,17 +26,5 @@ public class XsollaBackendSdk : ModuleRules
                 "XsollaLogin"
             }
         );
-            
-        PrivateDependencyModuleNames.AddRange(
-            new string[]
-            {
-                "CoreUObject",
-            }
-        );
-
-        if (Target.bBuildEditor)
-        {
-            PrivateDependencyModuleNames.Add("Settings");
-        }
     }
 }

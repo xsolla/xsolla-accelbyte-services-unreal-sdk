@@ -6,15 +6,11 @@
 
 #include "Modules/ModuleManager.h"
 
-DECLARE_LOG_CATEGORY_EXTERN(LogXsollaBackendModule, Warning, All);
+DECLARE_LOG_CATEGORY_EXTERN(LogXsollaAccelByteModule, Warning, All);
 
-// Define our main module class
-class FXsollaBackendSdkModule : public IModuleInterface
+class FXsollaAccelByteSdkModule : public IModuleInterface
 {
 public:
-
-    // IModuleInterface implementation
     virtual void StartupModule() override;
     virtual void ShutdownModule() override;
 };
-    
