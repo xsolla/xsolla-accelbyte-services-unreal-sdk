@@ -1,7 +1,7 @@
 {
   "FileVersion": 3,
   "Version": 1,
-  "VersionName": "2026.17",
+  "VersionName": "2026.18",
   "FriendlyName": "Xsolla AccelByte SDK",
   "Description": "Xsolla auth extension for AccelByte Gaming Services",
   "Category": "Custom",
